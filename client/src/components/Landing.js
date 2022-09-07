@@ -6,7 +6,7 @@ const Landing = () => {
       <h1>
         CARDNAME
       </h1>
-      Collect feedback form your users
+      Make usiness card online
     </div>
   )
 }

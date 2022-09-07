@@ -6,8 +6,7 @@ import * as actions from '../actions'
 import Header from './Header'
 import Landing from './Landing'; 
 import Dashboard from './Dashboard';
-
-const ProfileNew = () => <h2>ProfileNew</h2>
+import ProfileNew from './profiles/ProfileNew'
 
 class App extends Component {
   componentDidMount() {
@@ -17,16 +16,14 @@ class App extends Component {
   
   render() {
     return (
-      <div className='container'>
         <BrowserRouter>
-          <div>
+          <div className='container'>
             <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/profiles" component={Dashboard}/>
             <Route path="/profiles/new" component={ProfileNew}/>
           </div>
         </BrowserRouter>
-      </div>
     )
   }
 }
