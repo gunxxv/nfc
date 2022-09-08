@@ -1,0 +1,26 @@
+export default [
+  { label:'ชื่อ - นามสกุล (ภาษาไทย)', name:'name' },
+  { label:'ชื่อ - นามสกุล (ภาษาอังกฤษ)', name:'name_en' },
+  {label:'ชื่อบริษัท/องค์กร (ภาษาไทย)', name:'company_name'},  
+  {label:'ชื่อบริษัท/องค์กร (ภาษาอังกฤษ)', name:'company_name_en'},
+  {label:'ตำแหน่งในองค์กร (ภาษาไทย)', name:'title'},
+  {label:'ตำแหน่งในองค์กร (ภาษาอังกฤษ)', name:'title_en'},
+  {label:'ที่อยู่ (ภาษาไทย)', name:'address'},
+  {label:'ที่อยู่ (ภาษาอังกฤษ)', name:'address_en'},
+  {label:'ลิ้งค์โลเคชั่น', name:'location'},
+  {label:'อีเมล์ (1)', name:'email1'},
+  {label:'อีเมล์ (2)', name:'email2'},
+  {label:'ลิ้งค์เว็บไซต์', name:'website'},
+  {label:'ลิ้งค์ Line', name:'line'},
+  {label:'เบอร์โทรศัพท์ (1)', name:'tel1'},
+  {label:'เบอร์โทรศัพท์ (2)', name:'tel2'},
+  {label:'เบอร์โทรศัพท์ (3)', name:'tel3'},
+  {label:'ลิ้งค์ Facebook', name:'facebook'},
+  {label:'ลิ้งค์ Instagram', name:'instagram'},
+  {label:'ลิ้งค์ Tiktok', name:'tiktok'},
+  {label:'ลิ้งค์ Whatsapp', name:'whatsapp'},
+  {label:'ลิ้งค์ LinkedIn', name:'linkedIn'},
+  {label:'ไฟล์โลโก้บริษัทหรือภาพอื่นๆที่ต้องการพิมพ์ลงนามบัตร', name:'logo'},
+  {label:'ไฟล์รูปบุคคลเจ้าของบัตร Profile Picture', name:'avatar'}
+  
+];
