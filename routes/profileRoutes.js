@@ -3,17 +3,44 @@ const requireLogin = require('../middlewares/requireLogin')
 
 const Profile = mongoose.model('profiles')
 
-module.exports = app => {
-  app.post('/api/profiles', requireLogin, (req, res) => {
-    const { firstName, title, company, recipients } = req.body 
+module.exports = (app) => {
+  app.post('/api/profiles', requireLogin, async (req, res) => {
+    const { input_name, input_name_en, company_name, company_name_en } = req.body;
 
     const profile = new Profile({
-      firstName,
-      title,
-      company,
-      _user: req.user.id
-    })
+      input_name,
+      input_name_en,
+      company_name,
+      company_name_en,
+      _user: req.user.id,
+    });
 
-
+    try {
+      await profile.save();
+      const user = await req.user.save();
+      res.send(user)
+    } catch (e) {
+      res.status(422).send(e)
+    }
   })
 }
+
+      // title,
+      // title_en,
+      // address,
+      // address_en,
+      // location,
+      // email1,
+      // email2,
+      // website,
+      // line,
+      // tel1,
+      // tel2,
+      // tel3,
+      // facebook,
+      // instagram,
+      // tiktok,
+      // whatsapp,
+      // linkedIn,
+      // logo,
+      // avatar,

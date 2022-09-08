@@ -1,6 +1,6 @@
 export default [
-  { label:'ชื่อ - นามสกุล (ภาษาไทย)', name:'name' },
-  { label:'ชื่อ - นามสกุล (ภาษาอังกฤษ)', name:'name_en' },
+  { label:'ชื่อ - นามสกุล (ภาษาไทย)', name:'input_name' },
+  { label:'ชื่อ - นามสกุล (ภาษาอังกฤษ)', name:'input_name_en' },
   {label:'ชื่อบริษัท/องค์กร (ภาษาไทย)', name:'company_name'},  
   {label:'ชื่อบริษัท/องค์กร (ภาษาอังกฤษ)', name:'company_name_en'},
   {label:'ตำแหน่งในองค์กร (ภาษาไทย)', name:'title'},
