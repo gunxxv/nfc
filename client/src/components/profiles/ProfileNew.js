@@ -15,7 +15,6 @@ class ProfileNew extends Component {
       />
     }
     
-
     return <ProfileForm onProfileSubmit={() => this.setState({ showFormReview: true })}/>
   }
 
