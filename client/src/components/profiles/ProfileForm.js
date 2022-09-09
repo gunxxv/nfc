@@ -18,7 +18,6 @@ class ProfileForm extends Component {
   render() {
     return (
       <div>
-        {/* <form onSubmit={this.props.handleSubmit((values) => console.log(values))}> */}
         <form onSubmit={this.props.handleSubmit(this.props.onProfileSubmit)}>
           {this.renderFields()}
           <Link to="/profiles" className='red btn-flat white-text'>
@@ -37,25 +36,23 @@ class ProfileForm extends Component {
 function validate(values) {
   const errors = {};
   
-  // if (!values.email1) {
-  //   errors.email1 = 'Required'
-  // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-  //   errors.email1 = 'Invalid email address'
-  // }
+  if (!values.input_name) {
+    errors.input_name = 'Required'
+  }
 
-  // if (!values.email2) {
-  //   errors.email2 = 'Required'
-  // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-  //   errors.email2 = 'Invalid email address'
-  // }
+  if (!values.email1) {
+    errors.email1 = 'Required'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email1)) {
+    errors.email1 = 'Invalid email address'
+  }
 
-  
+
   // _.each(formFields, ({ name }) => {
   //   if (!values[name]) {
   //     errors[name] = 'กรุณากรอกข้อมูล'
-  //   }
-    
+  //   } 
   // })
+
   return errors
 }
 

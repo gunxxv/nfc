@@ -6,7 +6,7 @@ const Landing = () => {
       <h1>
         CARDNAME
       </h1>
-      Make usiness card online
+      Make business card online
     </div>
   )
 }

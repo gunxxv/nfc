@@ -1,12 +1,11 @@
 import _ from 'lodash'
 import React from 'react'
-import { render } from 'react-dom'
 import { connect } from 'react-redux'
-// import { formValues } from 'redux-form'
 import formFields from './formFields'
+import { withRouter } from 'react-router-dom'
 import * as actions from '../../actions'
 
-const ProfileFormReview = ({ onCancle, formValues, submitProfile }) => {
+const ProfileFormReview = ({ onCancle, formValues, submitProfile, history }) => {
   const reviewFileds = _.map(formFields, ({ name, label }) => {
     return (
       <div key={name}>
@@ -29,7 +28,7 @@ const ProfileFormReview = ({ onCancle, formValues, submitProfile }) => {
         Back
       </button>
       <button 
-        onClick={() => submitProfile(formValues)}
+        onClick={() => submitProfile(formValues, history)}
         className='green btn-flat right white-text'
       >
         Submit
@@ -45,4 +44,4 @@ function mepStateToProps (state) {
   }
 }
 
-export default connect(mepStateToProps, actions)(ProfileFormReview)
+export default connect(mepStateToProps, actions)(withRouter(ProfileFormReview))
