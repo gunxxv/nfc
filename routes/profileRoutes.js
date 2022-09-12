@@ -8,24 +8,56 @@ const profileTemplate = require('../services/cardsTemplates/profileTemplate')
 const Profile = mongoose.model('profiles')
 
 module.exports = (app) => {
+  app.get('/api/profiles', requireLogin, async(req, res) => {
+    const profiles = await Profile.find({ _user: req.user.id})
 
-  app.get('/api/profiles/thanks', (req, res) => {
-    res.send('Thanks for voting!')
+    res.send(profiles);
   })
 
-  app.post('/api/profiles/webhooks', (req, res) => {
-    const events = _.map(req.body, (event) => {
-      const pathname = new URL(event.url).pathname
-      const p = new Path('/api/profiles/:profileId/:choice')
-      console.log(p.test(pathname))
+  app.get('/api/profiles/:profileId/:choice', (req, res) => {
+    res.send('Thanks!')
+  })
+
+  // app.get('/api/profiles/webhooks', (req, res) => {
+  //   const profile = new Profile({
+  //     input_name : 'kan'
+  //   })
+  //   res.send(profileTemplate(profile))
+  // })
+  
+  app.get('/api/profiles/webhooks', (req, res) => {
+    const p = new Path('/api/profiles/:profileId/:choice')
+
+    const events = _.chain(req.body)
+    
+    .map(({ email1, url}) => {
+      const match = p.test(new URL(url).pathname)
+      if (match) {
+        return { email1, profileId: match.profileId, styleId: match.choice}
+      }
     })
-    // res.send(req.body)
+    .compact()
+    .uniqBy('email1', 'profileId', 'styleId')
+    .each(({ profileId, email1}) => {
+      Profile.updateOne({
+        id: profileId,
+        email1: email1
+      }, {
+        $set: { 'email1': 'jaculatio@gmail.com' }
+      }).exec();
+    })
+    .value();
+
+    console.log(events)
+    // res.send(profileTemplate(events))
+    res.send({})
   })
 
   app.post('/api/profiles', requireLogin, async (req, res) => {
-    const { input_name, input_name_en, company_name, company_name_en, title, title_en, address, address_en,location, email1,email2,website, line, tel1, tel2, tel3, facebook, instagram, tiktok, whatsapp, linkedIn, logo, avatar } = req.body;
+    const { profile_title, input_name, input_name_en, company_name, company_name_en, title, title_en, address, address_en,location, email1,email2,website, line, tel1, tel2, tel3, facebook, instagram, tiktok, whatsapp, linkedIn, logo, avatar } = req.body;
 
     const profile = new Profile({
+      profile_title,
       input_name,
       input_name_en,
       company_name,
@@ -56,7 +88,6 @@ module.exports = (app) => {
       await profile.save();
       const user = await req.user.save();
       res.send(user)
-      // res.send(profileTemplate(profile))
     } catch (e) {
       res.status(422).send(e)
     }

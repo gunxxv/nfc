@@ -1,4 +1,5 @@
 export default [
+  { label:'ชื่อ Profile', name:'profile_title' },
   { label:'ชื่อ - นามสกุล (ภาษาไทย)', name:'input_name' },
   { label:'ชื่อ - นามสกุล (ภาษาอังกฤษ)', name:'input_name_en' },
   {label:'ชื่อบริษัท/องค์กร (ภาษาไทย)', name:'company_name'},  

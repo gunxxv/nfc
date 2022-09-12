@@ -5,7 +5,7 @@ module.exports = profile => {
     <html>
       <body>
         <div style="text=align: center;">
-          <h3>My name is morgan</h3>
+          <h3>My name is ${profile.input_name}</h3>
           <p>Test Test Test Test</p>
           <p>${profile.body}</p>
           <div>

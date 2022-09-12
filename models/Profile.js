@@ -3,6 +3,7 @@ const { Schema } = mongoose
 
 
 const profileSchema = new Schema ({
+  profile_title: String,
   input_name: String,
   input_name_en: String,
   company_name: String,
