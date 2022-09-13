@@ -54,11 +54,12 @@ module.exports = (app) => {
   })
 
   app.delete('/api/profiles/:profileId', async(req, res) => {
-
-    console.log(req.params.profileId)
-    // const profile = await Profile.findByIdAndDelete(req.params.profileId)
-
-    res.send({})
+    try {
+      const profile = await Profile.findByIdAndDelete(req.params.profileId)
+      res.send({})
+    } catch (e) {
+      res.status(422).send(e)
+    }
   })
 
   app.post('/api/profiles', requireLogin, async (req, res) => {

@@ -34,17 +34,13 @@ class ProfileForm extends Component {
 }
 
 function validate(values) {
-  const errors = {};
+  const errors = null;
   
-  if (!values.input_name) {
-    errors.input_name = 'Required'
-  }
-
-  if (!values.email1) {
-    errors.email1 = 'Required'
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email1)) {
-    errors.email1 = 'Invalid email address'
-  }
+  // if (!values.email1) {
+  //   errors.email1 = 'Required'
+  // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email1)) {
+  //   errors.email1 = 'Invalid email address'
+  // }
 
 
   // _.each(formFields, ({ name }) => {
