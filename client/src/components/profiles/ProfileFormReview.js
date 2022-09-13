@@ -37,11 +37,11 @@ const ProfileFormReview = ({ onCancle, formValues, submitProfile, history }) => 
   )
 }
 
-function mepStateToProps (state) {
+function mapStateToProps (state) {
   console.log(state)
   return {
     formValues: state.form.profileForm.values
   }
 }
 
-export default connect(mepStateToProps, actions)(withRouter(ProfileFormReview))
+export default connect(mapStateToProps, actions)(withRouter(ProfileFormReview))

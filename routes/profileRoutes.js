@@ -53,6 +53,14 @@ module.exports = (app) => {
     res.send({})
   })
 
+  app.delete('/api/profiles/:profileId', async(req, res) => {
+
+    console.log(req.params.profileId)
+    // const profile = await Profile.findByIdAndDelete(req.params.profileId)
+
+    res.send({})
+  })
+
   app.post('/api/profiles', requireLogin, async (req, res) => {
     const { profile_title, input_name, input_name_en, company_name, company_name_en, title, title_en, address, address_en,location, email1,email2,website, line, tel1, tel2, tel3, facebook, instagram, tiktok, whatsapp, linkedIn, logo, avatar } = req.body;
 
@@ -81,6 +89,7 @@ module.exports = (app) => {
       linkedIn,
       logo,
       avatar,
+      createOn: Date.now(),
       _user: req.user.id
     });
 

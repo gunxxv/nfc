@@ -27,6 +27,7 @@ const profileSchema = new Schema ({
   linkedIn: String,
   logo: String,
   avatar: String,
+  createOn: Date,
   _user: {type: Schema.Types.ObjectId, ref: 'User'},
 })
 
