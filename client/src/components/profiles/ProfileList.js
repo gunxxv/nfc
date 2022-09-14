@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { fetchProfiles, deleteProfile, editProfile } from '../../actions'
 
 
@@ -19,6 +19,9 @@ class ProfileList extends Component {
   }
 
   renderProfiles() {
+    if (!this.props.profiles) {
+      return <div>Loading..</div>
+    }
     return this.props.profiles.map(profile => {
       return (
         <div className="card darken-1" key={profile._id}>
@@ -33,12 +36,14 @@ class ProfileList extends Component {
           </div>
           <div className='card-action'>
             {/* <a href={() => deleteProfile(profile._id)}>Remove</a> */}
-            <button 
-              onClick={() => this.handleClickEdit()}
+            <Link 
+              to={`/profiles/edit/${profile._id}`} 
+              // onClick={() => this.handleClickEdit()}
               className='yellow darken-3 btn-flat white-text'
+              style={{margin: '0 10px'}}
             >
               Edit
-            </button>
+            </Link>
             <button 
               onClick={() => this.handleClickRemove(profile._id, this.props.history)}
               className='yellow darken-3 btn-flat white-text'
@@ -62,7 +67,9 @@ class ProfileList extends Component {
 }
 
 function mapStateToProps({ profiles }) {
-  return { profiles };
+  return { 
+    profiles
+  };
 };
 
 

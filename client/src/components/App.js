@@ -7,6 +7,8 @@ import Header from './Header'
 import Landing from './Landing'; 
 import Dashboard from './Dashboard';
 import ProfileNew from './profiles/ProfileNew'
+import ProfileEdit from './profiles/ProfileEdit';
+import ProfileDelete from './profiles/ProfileDelete';
 
 class App extends Component {
   componentDidMount() {
@@ -23,6 +25,8 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/profiles" component={Dashboard}/>
             <Route path="/profiles/new" component={ProfileNew}/>
+            <Route exact path="/profiles/edit/:id" component={ProfileEdit}/>
+            <Route exact path="/profiles/delete" component={ProfileDelete}/>
           </div>
         </BrowserRouter>
       </div>

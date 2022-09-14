@@ -10,12 +10,13 @@ import formFields from './formFields';
 
 class ProfileForm extends Component {
   renderFields() {
-    return _.map(formFields, ({ label, name}) => {
-      return <Field key={name} component={ProfileField} type="text" label={label} name={name}/>
+    return _.map(formFields, ({ label, name, type}) => {
+      return <Field key={name} component={ProfileField} type={type} label={label} name={name}/>
     })
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <form onSubmit={this.props.handleSubmit(this.props.onProfileSubmit)}>
@@ -55,5 +56,5 @@ function validate(values) {
 export default reduxForm({
   validate, 
   form: 'profileForm',
-  destroyOnUnmount: false
+  destroyOnUnmount: false,
 })(ProfileForm)

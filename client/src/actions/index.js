@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { FETCH_PROFILES, FETCH_USER, DELETE_PROFILE, EDIT_PROFILE } from './types'
+import { FETCH_PROFILES, FETCH_USER, DELETE_PROFILE, EDIT_PROFILE, FETCH_PROFILE } from './types'
 
 
 export const fetchUser = () => async dispatch => {
@@ -21,14 +21,19 @@ export const fetchProfiles = () => async dispatch => {
     dispatch({ type: FETCH_PROFILES, payload: res.data })
 }
 
-export const deleteProfile = (values, history) => async dispatch => {
-    const res = await axios.delete(`/api/profiles/${values}`)
+export const fetchProfile = id => async dispatch => {
+    const res = await axios.get(`/api/profiles/${id}`)
+
+    dispatch({ type: FETCH_PROFILE, payload: res.data })
+}
+
+export const deleteProfile = (id, history) => async dispatch => {
+    const res = await axios.delete(`/api/profiles/${id}`)
     history.push('/');
     dispatch({ type: DELETE_PROFILE, payload: res.data })
 }
 
-export const editProfile = () => async dispatch => {
-    console.log('edit profile')
-    // const res = await axios.get('/api/profiles/6320a58f36edbcd40852a255/1')
-    // dispatch({ type: EDIT_PROFILE, payload: res.data })
+export const editProfile = (id, values) => async dispatch => {
+    const res = await axios.put(`/api/profiles/${id}`, values)
+    dispatch({ type: EDIT_PROFILE, payload: res.data })
 }

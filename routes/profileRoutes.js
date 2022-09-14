@@ -14,6 +14,12 @@ module.exports = (app) => {
     res.send(profiles);
   })
 
+  app.get('/api/profiles/:profileId', async(req, res) => {
+    const profile = await Profile.findById( req.params.profileId)
+
+    res.send(profile);
+  })
+
   app.get('/api/profiles/:profileId/:choice', (req, res) => {
     res.send('Thanks!')
   })
@@ -60,6 +66,11 @@ module.exports = (app) => {
     } catch (e) {
       res.status(422).send(e)
     }
+  })
+
+  app.put('/api/profiles/:profileId', async(req,res) => {
+    const profile = await Profile.findByIdAndUpdate(req.params.profileId, req.body)
+    res.send({})
   })
 
   app.post('/api/profiles', requireLogin, async (req, res) => {
