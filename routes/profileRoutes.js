@@ -59,7 +59,7 @@ module.exports = (app) => {
   //   res.send({})
   // })
 
-  app.delete("/api/profiles/:profileId", async (req, res) => {
+  app.delete("/api/profiles/:profileId", requireLogin, async (req, res) => {
     try {
       const profile = await Profile.findByIdAndDelete(req.params.profileId);
       res.send({});
@@ -68,7 +68,7 @@ module.exports = (app) => {
     }
   });
 
-  app.put("/api/profiles/:profileId", async (req, res) => {
+  app.put("/api/profiles/:profileId", requireLogin, async (req, res) => {
     const profile = await Profile.findByIdAndUpdate(
       req.params.profileId,
       req.body
